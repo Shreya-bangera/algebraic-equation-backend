@@ -31,9 +31,8 @@ Spring Boot REST API – Store & Solve Algebraic Expressions
 ✅ JSON request & response
 ✅ Error handling with correct HTTP status codes
 
-
-
 🏗️ Project Structure
+
 src/main/java/com/example/algebraicevaluator
 │
 ├── controller
@@ -47,6 +46,7 @@ src/main/java/com/example/algebraicevaluator
 │     └── ExpressionNode.java
 │
 └── AlgebraicEvaluatorApplication.java
+
 
 
 🔢 Supported Operators
