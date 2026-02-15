@@ -1,66 +1,95 @@
 📘 Algebraic Equation Backend
 
-Spring Boot – Postfix Expression Tree Implementation
+Spring Boot REST API – Store & Solve Algebraic Expressions
 
-📌 Project Overview
+🚀 Project Overview
 
-This project is a RESTful Spring Boot application that:
+This project is a Spring Boot REST API that allows users to:
 
-Stores algebraic equations
+Store algebraic equations
 
-Converts them into postfix notation
+Convert infix expressions to postfix
 
-Builds an expression tree
+Construct an expression tree
 
-Evaluates equations using variable substitution
+Evaluate equations using variable substitution
 
-Uses in-memory storage
+Retrieve stored equations
 
-Supports JSON request/response
+The application uses in-memory storage and follows proper REST architecture.
 
-Testable via Postman
 
-The application follows the requirements specified in the backend assignment.
+🧠 Features Implemented
 
-🧠 Core Features
-1️⃣ Store Algebraic Equation
+✅ Infix → Postfix conversion
+✅ Expression Tree construction
+✅ Multi-variable support (x, y, z, etc.)
+✅ Power operator (^) support
+✅ In-memory storage using ConcurrentHashMap
+✅ Proper REST endpoints
+✅ JSON request & response
+✅ Error handling with correct HTTP status codes
 
-Converts infix expression to postfix
 
-Builds an expression tree
+🏗️ Project Structure
+src/main/java/com/example/algebraicevaluator
+│
+├── controller
+│     └── HelloController.java
+│
+├── service
+│     └── ExpressionService.java
+│
+├── model
+│     ├── Equations.java
+│     └── ExpressionNode.java
+│
+└── AlgebraicEvaluatorApplication.java
 
-Stores equation in memory
+
+🔢 Supported Operators
+
++ Addition
+
+- Subtraction
+
+* Multiplication
+
+/ Division
+
+^ Power
+
+Supports expressions like:
+
+x + y
+x^2 + y^2 - 4
+x*y + z^3 - 7
+a^2 + b^2 + c^2
+
+🌐 API Endpoints
+1️⃣ Store Equation
+
+Stores equation and builds expression tree.
 
 Endpoint
-
 POST /api/equations/store
 
-
 Request Body
-
 {
   "equation": "x^2 + y^2 - 4"
 }
 
-
 Response
-
 {
   "message": "Equation stored successfully",
   "equationId": 1
 }
 
-2️⃣ Retrieve Stored Equations
-
-Returns all stored equations reconstructed from expression trees.
-
+2️⃣ Get All Stored Equations
 Endpoint
-
 GET /api/equations
 
-
 Response
-
 {
   "equations": [
     {
@@ -72,15 +101,15 @@ Response
 
 3️⃣ Evaluate Equation
 
-Evaluates a stored equation using variable substitution.
+Evaluates stored equation with variable values.
 
 Endpoint
+POST /api/equations/{id}/evaluate
 
-POST /api/equations/{equationId}/evaluate
-
+Example
+POST /api/equations/1/evaluate
 
 Request Body
-
 {
   "variables": {
     "x": 3,
@@ -88,9 +117,7 @@ Request Body
   }
 }
 
-
 Response
-
 {
   "equationId": 1,
   "equation": "x^2 + y^2 - 4",
@@ -101,60 +128,6 @@ Response
   "result": 21
 }
 
-🏗️ Architecture & Design
-
-Project Structure:
-
-controller/
-service/
-model/
-
-🔹 Controller
-
-Handles REST API endpoints.
-
-🔹 Service
-
-Tokenization
-
-Infix → Postfix conversion
-
-Expression Tree construction
-
-Evaluation logic
-
-🔹 Model
-
-Equation model
-
-Expression Tree Node
-
-🔢 Supported Operators
-
-+
-
--
-
-*
-
-/
-
-^ (power)
-
-Supports:
-
-Multiple variables (x, y, z, etc.)
-
-Multi-digit numbers
-
-Expressions like:
-
-3x + 2y - z
-
-x^2 + y^2 - 4
-
-x*y + z^3 - 7
-
 🛠️ Technologies Used
 
 Java 17
@@ -163,17 +136,11 @@ Spring Boot 3
 
 Maven
 
-REST APIs
+REST API
 
-Postman for testing
+Postman (for testing)
 
-In-memory storage (ConcurrentHashMap)
-
-
-
-
-
-▶️ How to Run the Project
+▶️ How to Run
 1️⃣ Clone Repository
 git clone https://github.com/Shreya-bangera/algebraic-equation-backend.git
 
@@ -185,17 +152,20 @@ cd algebraic-evaluator
 Windows:
 
 mvnw.cmd spring-boot:run
-OR
+
+
+Mac/Linux:
+
 ./mvnw spring-boot:run
 
 
-Application runs at:
+Application will start at:
 
 http://localhost:8080
 
-🧪 Testing via Postman
+🧪 Testing
 
-Test the following endpoints:
+Use Postman to test:
 
 Store equation
 
@@ -203,30 +173,16 @@ Retrieve equations
 
 Evaluate equation
 
-All APIs are JSON based.
-
-
+All endpoints accept and return JSON.
 
 ⚠️ Error Handling
 
-The application handles:
+The API handles:
 
-Missing equation input
+Missing equation input → 400 Bad Request
 
-Invalid equation syntax
+Invalid equation ID → 404 Not Found
 
-Missing variable values
+Missing variables → 400 Bad Request
 
-Division by zero
-
-Invalid equation ID
-
-
-
-Returns proper HTTP status codes:
-
-400 – Bad Request
-
-404 – Not Found
-
-500 – Internal Error
+Division by zero → 400 Bad Request
