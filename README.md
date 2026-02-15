@@ -169,6 +169,7 @@ Application will start at:
 
 http://localhost:8080
 
+
 🧪 Testing
 
 Use Postman to test:
@@ -181,6 +182,7 @@ Use Postman to test:
 
 All endpoints accept and return JSON.
 
+
 ⚠️ Error Handling
 
 The API handles:
@@ -191,4 +193,4 @@ The API handles:
 
 3. Missing variables → 400 Bad Request
 
-Division by zero → 400 Bad Request
+4. Division by zero → 400 Bad Request
