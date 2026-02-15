@@ -4,19 +4,20 @@ Spring Boot REST API – Store & Solve Algebraic Expressions
 
 🚀 Project Overview
 
-This project is a Spring Boot REST API that allows users to:
+1. This project is a Spring Boot REST API that allows users to:
 
-Store algebraic equations
+2. Store algebraic equations
 
-Convert infix expressions to postfix
+3. Convert infix expressions to postfix
 
-Construct an expression tree
+4. Construct an expression tree
 
-Evaluate equations using variable substitution
+5. Evaluate equations using variable substitution
 
-Retrieve stored equations
+6. Retrieve stored equations
 
-The application uses in-memory storage and follows proper REST architecture.
+7. The application uses in-memory storage and follows proper REST architecture.
+
 
 
 🧠 Features Implemented
@@ -29,6 +30,7 @@ The application uses in-memory storage and follows proper REST architecture.
 ✅ Proper REST endpoints
 ✅ JSON request & response
 ✅ Error handling with correct HTTP status codes
+
 
 
 🏗️ Project Structure
@@ -67,6 +69,7 @@ x*y + z^3 - 7
 a^2 + b^2 + c^2
 
 🌐 API Endpoints
+
 1️⃣ Store Equation
 
 Stores equation and builds expression tree.
@@ -85,6 +88,7 @@ Response
   "equationId": 1
 }
 
+
 2️⃣ Get All Stored Equations
 Endpoint
 GET /api/equations
@@ -98,6 +102,7 @@ Response
     }
   ]
 }
+
 
 3️⃣ Evaluate Equation
 
@@ -138,6 +143,7 @@ Maven
 
 REST API
 
+
 Postman (for testing)
 
 ▶️ How to Run
@@ -167,11 +173,11 @@ http://localhost:8080
 
 Use Postman to test:
 
-Store equation
+1. Store equation
 
-Retrieve equations
+2. Retrieve equations
 
-Evaluate equation
+3. Evaluate equation
 
 All endpoints accept and return JSON.
 
@@ -179,10 +185,10 @@ All endpoints accept and return JSON.
 
 The API handles:
 
-Missing equation input → 400 Bad Request
+1. Missing equation input → 400 Bad Request
 
-Invalid equation ID → 404 Not Found
+2. Invalid equation ID → 404 Not Found
 
-Missing variables → 400 Bad Request
+3. Missing variables → 400 Bad Request
 
 Division by zero → 400 Bad Request
